@@ -5,21 +5,21 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Map;
 
-@Document(collection = "forums")
-public class Forum {
+@Document(collection = "posts")
+public class Post {
     @Id
     @JsonSerialize(using = ToStringSerializer.class) // TODO: Should be done via MapperConfig
     private ObjectId id;
 
-    @Indexed(unique = true)
-    private String name;
-    private String description;
+    private Thread thread;
+
+    private String subject;
+    private String message;
 
     @JsonIgnore
     @Field("_imported")
@@ -29,19 +29,35 @@ public class Forum {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public Thread getThread() {
+        return thread;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setThread(Thread thread) {
+        this.thread = thread;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Map<String, Object> getImported() {
+        return imported;
+    }
+
+    public void setImported(Map<String, Object> imported) {
+        this.imported = imported;
     }
 }
