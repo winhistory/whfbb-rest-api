@@ -1,0 +1,3 @@
+mongodb:
+  databaseName: whfdb
+  connectionUri: mongodb://localhost
