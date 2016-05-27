@@ -23,8 +23,8 @@ public class ForumController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Page<Forum> listForums(Pageable p) {
-        return forumRepository.findAll(p);
+    public Page<Forum> listForums(Pageable pageable) {
+        return forumRepository.findAll(pageable);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

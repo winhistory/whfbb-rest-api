@@ -23,8 +23,8 @@ public class ThreadController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Page<Thread> listThreads(Pageable p) {
-        return threadRepository.findAll(p);
+    public Page<Thread> listThreads(Pageable pageable) {
+        return threadRepository.findAll(pageable);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

@@ -23,8 +23,8 @@ public class PostController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Page<Post> listPosts(Pageable p) {
-        return postRepository.findAll(p);
+    public Page<Post> listPosts(Pageable pageable) {
+        return postRepository.findAll(pageable);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
